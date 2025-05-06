@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= post.title %> | My Blog</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <h1><%= post.title %></h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/posts/new">New Post</a>
+        </nav>
+    </header>
+
+    <main>
+        <article class="post-full">
+            <div class="post-meta">
+                <span class="post-date">Posted on <%= post.createdAt.toDateString() %></span>
+                <div class="post-actions">
+                    <a href="/posts/<%= post._id %>/edit" class="btn">Edit</a>
+                    <form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+            </div>
+            <div class="post-content">
+                <%= post.content %>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; <%= new Date().getFullYear() %> My Personal Blog</p>
+    </footer>
+</body>
+</html>
